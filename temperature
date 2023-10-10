@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Temperature Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url('backgroundtemp.jpg'); /* Replace with your image file path */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .converter {
+      max-width: 300px;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8); /* Add a semi-transparent white background to make the form readable */
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
+  <script>
+    function convert(type) {
+      if (type === 'celsius') {
+        let celsius = parseFloat(document.getElementById('celsius').value);
+        let fahrenheit = (celsius * 9/5) + 32;
+        document.getElementById('fahrenheit').value = fahrenheit.toFixed(2);
+      } else if (type === 'fahrenheit') {
+        let fahrenheit = parseFloat(document.getElementById('fahrenheit').value);
+        let celsius = (fahrenheit - 32) * 5/9;
+        document.getElementById('celsius').value = celsius.toFixed(2);
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="converter">
+    <h2>Celsius to Fahrenheit and vice versa</h2>
+    <label for="celsius">Celsius:</label>
+    <input type="number" id="celsius" placeholder="Enter Celsius" oninput="convert('celsius')">
+    <br>
+    <label for="fahrenheit">Fahrenheit:</label>
+    <input type="number" id="fahrenheit" placeholder="Enter Fahrenheit" oninput="convert('fahrenheit')">
+  </div>
+</body>
+</html>
